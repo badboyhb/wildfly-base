@@ -1,4 +1,4 @@
-# Version 0.0.1
+# Version 0.0.2
 
 FROM centos:latest
 
@@ -11,8 +11,8 @@ RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip && yum 
 # The user ID 1000 is the default for the first "regular" user on Fedora/RHEL,
 # so there is a high chance that this ID will be equal to the current user
 # making it easier to use volumes (no permission issues)
-RUN groupadd -r jboss -g 1000 && useradd -u 1000 -r -g jboss -m -d /opt/jboss -c "JBoss user" -p "jboss" jboss && \
-    chmod 755 /opt/jboss
+RUN groupadd -r jboss -g 1000 && useradd -u 1000 -r -g jboss -m -d /opt/jboss -c "JBoss user" jboss && \
+    chmod 755 /opt/jboss && echo "jboss:jboss" | chpasswd
 
 # Set the working directory to jboss' user home directory
 WORKDIR /opt/jboss
