@@ -19,5 +19,3 @@ WORKDIR /opt/jboss
 
 # Specify the user which should be used to execute all commands below
 USER jboss
-
-
